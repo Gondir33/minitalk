@@ -22,7 +22,7 @@ void	ft_putnbr_fd(int n, int fd)
 	write(fd, &c, 1);
 }
 
-static void get_message(int sig, siginfo_t *info, void *context)
+static void	get_message(int sig, siginfo_t *info, void *context)
 {
 	static int	len;
 	static int	byte;
@@ -46,7 +46,7 @@ static void get_message(int sig, siginfo_t *info, void *context)
 	kill(info->si_pid, SIGUSR1);
 }
 
-int main()
+int	main(void)
 {
 	struct sigaction	act;
 
@@ -57,7 +57,7 @@ int main()
 	sigaction(SIGUSR2, &act, NULL);
 	write(1, "\nPID: ", 6);
 	ft_putnbr_fd(getpid(), 1);
-	write(1,"\n", 2);
+	write(1, "\n", 2);
 	while (1)
 		pause();
 	return (0);

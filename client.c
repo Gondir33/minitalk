@@ -12,7 +12,7 @@
 
 #include "minitalk.h"
 
-static void the_end(int sig, siginfo_t *info, void *context)
+static void	the_end(int sig, siginfo_t *info, void *context)
 {
 	(void)context;
 	(void)info;
@@ -38,12 +38,12 @@ int	ft_pid(const char *s)
 	return (n);
 }
 
-void send_message(int pid, int c)
+void	send_message(int pid, int c)
 {
 	int	counter;
 
 	counter = 1 << 6;
-	while(counter)
+	while (counter)
 	{
 		if (counter & c)
 			kill(pid, SIGUSR1);
